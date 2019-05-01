@@ -24,42 +24,123 @@ namespace Lab8
              * 
              * **Hint** Make it easy for the user -- tell them what information is available
              */
-            
+
             //string res = "y";
+
             int student;
+            string firstChoice, secondChoice;
+            bool repeat = true;
+
             Console.WriteLine("Welcome to our C# class.");
             Console.Write("Which student would you like to learn more about?");
 
-            
-            Console.WriteLine("(enter a number 1-20): ");
-            student = int.Parse(Console.ReadLine());
 
-            for(int i = 0; i < 20; i++)
+            while (repeat == true)
             {
+                try
+                {
+
+                    student = CheckStudent();
+                    repeat = false;
+
+                    Console.WriteLine($"Student {student} is {Students()[student - 1]}");
 
 
+                    Console.WriteLine($"What would you like to know about {Students()[student - 1]}?");
+                    firstChoice = Console.ReadLine();
+
+                    if (firstChoice.ToLower() != "hometown" && firstChoice.ToLower() != "favorite food")
+                    {
+                        
+                        throw new InvalidOperationException("That data does not exist. Please try again. (enter \"hometown\" or \"favorite food\")");
+                    }
+                    
+                    
+
+
+                    if (firstChoice.ToLower() == "hometown")
+                    {
+                        Console.Write($"{Students()[student - 1]} is from {HomeTown()[student - 1]}.");
+                        Console.WriteLine(" Would you like to know more? (enter \"yes\" or \"no\")");
+                        secondChoice = Console.ReadLine();
+
+                        if (secondChoice.ToLower() == "yes")
+                        {
+                            Console.WriteLine($"{Students()[student - 1]}'s favorite food is {FavFood()[student - 1]}.");
+                        }
+                    }
+                    else if (firstChoice.ToLower() == "favorite food")
+                    {
+                        Console.Write($"{Students()[student - 1]}'s favorite food is {FavFood()[student - 1]}.");
+                        Console.WriteLine(" Would you like to know more? (enter \"yes\" or \"no\")");
+                        secondChoice = Console.ReadLine();
+
+                        if (secondChoice.ToLower() == "yes")
+                        {
+                            Console.WriteLine($"{Students()[student - 1]} is from {HomeTown()[student - 1]}.");
+                        }
+                    }
+
+                    Console.WriteLine("Thanks!");
+
+                   
+                }
+                catch (InvalidOperationException invalid)
+                {
+                    Console.WriteLine(invalid.Message);
+                }
+
+                
             }
 
+        } 
+               
 
+
+                
+
+            
 
 
             
 
-        }
-        //Method Space
-
         
-        public static string GetStudent(int studentNumber)
+        //Method Space
+        public static bool IsStudent(int student)
         {
-            if(studentNumber > 0 && studentNumber <=20)
+            if (student > 0 && student <= 20)
             {
-                return Students()[studentNumber];
+                return true;
             }
             else
             {
-                throw new Exception("That Student does not exist.");
+                return false;
             }
         }
+        public static int CheckStudent()
+        {
+            Console.WriteLine("\n(enter a number 1-20): ");
+            int student = int.Parse(Console.ReadLine());
+
+            if (student < 1 || student > 20)
+            {
+                throw new InvalidOperationException("That Student does not exist. Please try again.");
+            }
+            return student;
+            
+        }
+        //public static string CheckFirstChoice(string choice)
+        //{
+        //    Console.WriteLine($"What would you like to know about {Students()[student - 1]}?");
+        //    string choice = Console.ReadLine();
+
+        //    if (choice.ToLower() != "hometown" && choice.ToLower() != "favorite food")
+        //    {
+        //        throw new InvalidOperationException("That data does not exist. Please try again. (enter \"hometown\" or \"favorite food\")");
+        //    }
+        //    return choice;
+        //}
+
         public static string[] Students()
         {
             string[] students = { "Pikachu", "Bulbasaur", "Charmander", "Squirtle", "Ivysaur", "Charmeleon", "Wartortle",
@@ -89,25 +170,5 @@ namespace Lab8
             return favFood;
         }
 
-       /* public static string StudentException(int studentNumber)
-        {
-            if(InClass(studentNumber))
-            {
-                return Students()[studentNumber - 1];               
-            }
-            else
-            {
-                throw new Exception("That student does not exist.");
-            }
-             
-        }
-        public static string HomeTown()
-        {
-
-        }
-        public static string FavoriteFoodException()
-        {
-
-        }*/
     }
 }

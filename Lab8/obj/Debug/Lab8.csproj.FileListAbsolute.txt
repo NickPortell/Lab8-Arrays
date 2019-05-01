@@ -1,0 +1,7 @@
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\bin\Debug\Lab8.exe.config
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\bin\Debug\Lab8.exe
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\bin\Debug\Lab8.pdb
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\obj\Debug\Lab8.csprojAssemblyReference.cache
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\obj\Debug\Lab8.csproj.CoreCompileInputs.cache
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\obj\Debug\Lab8.exe
+F:\GrandCircus\Documents\Labs\Lab8-Arrays\Lab8\obj\Debug\Lab8.pdb
